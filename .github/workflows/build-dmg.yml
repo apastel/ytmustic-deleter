@@ -1,6 +1,6 @@
-# This workflow builds and tests the Linux installer for YTMusic Deleterr.
+# This workflow builds and tests the macOS installer for YTMusic Deleterr.
 
-name: Build and Verify (Linux)
+name: Build and Verify (macOS)
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
       - '.gitignore'
       - '.pre-commit-comfig.yaml'
       - '**/build-exe.yml'
-      - '**/build-dmg.yml'
+      - '**/build-deb.yml'
       - '**/pytest.yml'
       - '**/release.yml'
   pull_request:
@@ -22,7 +22,7 @@ on:
     - cron: '0 10 * * *'
 
 concurrency:
-  group: build-deb
+  group: build-dmg
   cancel-in-progress: true
 
 permissions:
@@ -34,7 +34,7 @@ defaults:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     outputs:
       installer-version: ${{ steps.json-properties.outputs.version }}
       cli-version: ${{ steps.run-cli.outputs.version }}
