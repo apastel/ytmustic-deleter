@@ -103,6 +103,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.accountWidgetCloseButton.clicked.connect(self.accountWidget.close)
         self.settings_dialog = SettingsDialog(self)
         self.settings_dialog.save_settings_signal.connect(self.save_settings)
+        self.menuBar = self.menuBar()
         self.actionSettings.triggered.connect(self.settings_dialog.exec)
         self.actionExit.triggered.connect(QCoreApplication.quit)
         self.removeLibraryButton.clicked.connect(self.prepare_to_invoke)
